@@ -1,0 +1,33 @@
+extends layout
+
+block content
+
+  h1 OAUTH 2 Demo
+  div
+    p.
+      This program simulates a user granting a third party application permissions using the
+      <b>Authorization Code</b> grant type of the <a href="https://tools.ietf.org/html/rfc6749">Oauth 2.0</a> authorization framework
+      using the <em>node-oauth2-server</em> javascript library.
+
+  include diagram.pug
+
+  div
+    p.
+      As a starting point we have a user (<b>resource owner</b>) who already has an account with an existing <b>resource provider</b>,
+      for example this could be a google or facebook account.  The user is modelled as a <b>user agent</b> (e.g., web browser) as
+      this handles all the details of headers/redirects etc. I merged the <b>authorization server</b>
+      and <b>resource server</b> together for convienience but they can be different servers.
+
+    p.
+      The user has stored some <b>User Data</b> on the resource provider and would like to give access to another service
+      (<b>client app</b>) to access this data.
+
+    h3 Step 1
+    p.
+      The client app registers their <b>client_id</b>, <b>redirect_uri</b> and <b>client_secret</b> with the resource provicer.
+
+    h2 Step 2
+    p.
+      The user visits the client app.
+
+    a(href='/clientapp/home' class="button") to client app

@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  h1 redirect_uri to client app callback
+  div
+    h3 Step 5
+    p.
+      After a successful authorization the user is redicted back to the client app's <b>redirect_url</b> with
+    ul
+      li <b> code </b> the authorization code to be used by the client in the next step
+      li <b> state </b> the previoulsy sent state to prevent CSRF.
+  include diagram.pug
+
+  div
+    h3 Step 6
+    p.
+      In the background the client server can now request an <b>access token</b> (which
+      is ultimately what is required for accessing)
+      using the returned <b>code</b> and its <b>client_secret</b>
+      The client would <b>POST</b> the following parameters:
+    ul
+      li <b>code</b> What was returned to the client the redirect uri.
+      li <b>client_id</b>
+      li <b>client_secret</b> Known only to client and resource provider.
+      li <b>redirect_uri</b> Not sure why, but same uri the user was redirected to.
+      li <b>grant_type</b> In this case always <b>authorization_code</b>
+
+    p.
+      Here you can simulate the client making the request in the background to see
+      what the return form looks like.
+
+    form(method='post', action='/oauth/token')
+      div
+        label(for='code') code:
+        input#name.form-control(type='text', name='code' value= code)
+      div
+        label(for='client_id') client_id:
+        input#name.form-control(type='text', name='client_id' value=client_id)
+      div
+        label(for='client_secret') client_secret:
+        input#name.form-control(type='text', name='client_secret' value=client_secret)
+      div
+        label(for='redirect_uri') redirect_uri:
+        input#name.form-control(type='text', name='redirect_uri' value=redirect_uri)
+      div
+        label(for='grant_type') grant_type:
+        input#name.form-control(type='text', name='grant_type' value="authorization_code")
+      button.btn.btn-primary(type='submit' class="button") simulate
+
+
+  div
+    p.
+      Or you can use the already retrieved access token to now access the user data in the
+      as the client would:
+    a(href=`/clientapp/usetoken?access_token=${access_token}` class="button") use access token
+
+

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1 Login
+  div
+    p.
+      The client app has redirected the user to the resource provider to request
+      access. Unless the user agent is already logged in (e.g. session key) the resource provider will
+      first require the user to log in.
+
+  include diagram.pug
+
+  div
+    h3 Step 4
+    p.
+      The resource provider login page (here is a prefilled valid user):
+
+    form(method='post', action='/login')
+      div
+        label(for='user') User:
+        input#name.form-control(type='text', name='user' value=username)
+      div
+        label(for='password') Pasword:
+        input#name.form-control(type='text', name='password' value=password)
+      button.btn.btn-primary(type='submit' class="button") Login

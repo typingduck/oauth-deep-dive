@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  h1 Client App
+  div
+    p.
+      This <b>client app</b> would now like to access the user data stored on <b>resource provider</b>.
+
+  include diagram.pug
+
+  div
+    h3 Step 3
+    p.
+      The user (agent) is requested for access. In practice this means redirecting the
+      user to the <b>authorization server</b> with the following parameters:
+    ul
+      li <b>client_id</b>  the previously stored client_id with the resource provider
+      li <b>response_type</b>  Descibes the grant type, in our flow <b>code</b>
+      li <b>scope</b>  a space delimited list of scopes
+      li <b>state</b>  Optional, but should be used to prevent cross-site request forgery (a malicous attacker asking to use the client app without user's knowledge).
+      li <b>redirect_uri</b>  Optional, we will ignore here and only use the previously stored URI.
+
+    a(href=`/oauth/authorize?client_id=${client_id}&response_type=code&scope=${scope}&state=TBD`, class="button") request access
+

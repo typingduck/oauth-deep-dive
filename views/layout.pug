@@ -1,0 +1,16 @@
+//- Function that gives the name of the template being rendered.
+//- E.g. "/Users/a/b/c/index.pug"  ->  "index"
+-  function templateName() { return locals.filename.split('.')[0].split('/').pop(); };
+-
+doctype html
+html(lang="en")
+  head
+    title='oauth demo app'
+    link(rel='stylesheet', href='/oauth-deep-dive.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
+    script.
+      var DIAGRAM_PAGE = Symbol.for("#{templateName()}");
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.2.9/jsplumb.js")
+  body
+    block content

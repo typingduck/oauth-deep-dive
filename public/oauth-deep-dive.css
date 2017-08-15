@@ -1,0 +1,118 @@
+body {
+  padding: 10px 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+form div label {
+    display: inline-block;
+    width: 200px;
+    text-align: right;
+}
+
+a {
+  color: #00B7FF;
+}
+
+b {
+  color: #bf616a;
+}
+
+li {
+  list-style-position: inside; /* Otherwise hidden behind floats. */
+}
+
+.button {
+  background-color: green;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #AAA;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+/* diagram */
+
+#tduck-diagram {
+  background-color: #EEE;
+  border-radius: 10px;
+  float: left;
+  height: 400px;
+  margin-right: 10px;
+  position: relative;
+  text-align: center;
+  width: 600px;
+}
+
+.tduck-diagram-obj {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  border-radius: 15px;
+
+  background: #6FB1FC;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 2px 2px #AAA;
+}
+
+#user.tduck-diagram-obj {
+    left: 40px;
+    top: 140px;
+}
+
+#clnt.tduck-diagram-obj {
+    left: 340px;
+    top: 50px;
+}
+
+#rsce.tduck-diagram-obj {
+    left: 340px;
+    top: 260px;
+}
+
+#data.tduck-diagram-obj {
+    left: 470px;
+    top: 260px;
+}
+
+/* Ensures min-width for text next to floated elements */
+.tduck-diagram-spacer {
+  width: 12em;
+  display: block;
+  overflow: hidden;
+}
+
+
+/* Arrows */
+
+.tduck-path :first-child {
+  stroke-width: 10;
+}
+
+.tduck-path path {
+  stroke: #AAA;
+  fill: #AAA;
+}
+
+.tduck-path-green path {
+  stroke: #86B342;
+  fill: #86B342;
+}
+
+.tduck-path-active path {
+  stroke: #F5A45D;
+  fill: #F5A45D;
+}
+
+
